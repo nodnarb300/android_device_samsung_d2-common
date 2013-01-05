@@ -29,7 +29,7 @@ USE_CAMERA_STUB := true
 -include device/samsung/msm8960-common/BoardConfigCommon.mk
 
 # Kernel
-TARGET_KERNEL_SOURCE        := kernel/samsung/d2
+TARGET_KERNEL_SOURCE        := kernel/samsung/d2_custom
 BOARD_KERNEL_CMDLINE        := androidboot.hardware=qcom user_debug=31 zcache
 BOARD_KERNEL_BASE           := 0x80200000
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01300000
