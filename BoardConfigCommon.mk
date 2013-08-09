@@ -32,7 +32,9 @@ BOARD_KERNEL_BASE           := 0x80200000
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01300000
 BOARD_KERNEL_PAGESIZE       := 2048
 TARGET_KERNEL_VARIANT_CONFIG := cyanogen_d2_defconfig
+ifeq ($(HAVE_SELINUX),true)
 TARGET_KERNEL_SELINUX_CONFIG := m2selinux_defconfig
+endif
 
 TARGET_BOOTLOADER_BOARD_NAME := MSM8960
 
@@ -57,9 +59,15 @@ COMMON_GLOBAL_CFLAGS += -DQCOM_BSP_CAMERA_ABI_HACK
 # bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/d2-common/bluetooth
 BOARD_BLUEDROID_VENDOR_CONF := device/samsung/d2-common/bluetooth/vnd_d2.txt
+BOARD_BLUETOOTH_USES_HCIATTACH_PROPERTY := false
 
 # Disable initlogo, Samsungs framebuffer is weird
 TARGET_NO_INITLOGO := true
+
+# HAX
+#BOARD_USE_SAMSUNG_SEPARATEDSTREAM := true
+#BOARD_USES_LIBMEDIA_WITH_AUDIOPARAMETER := true
+#TARGET_PROVIDES_LIBAUDIO := true
 
 # Use Audience A2220 chip
 BOARD_HAVE_AUDIENCE_A2220 := true
@@ -69,6 +77,3 @@ BOARD_HAVE_DOCK_USBAUDIO := true
 
 #camera abi compatiblily
 TARGET_DISPLAY_INSECURE_MM_HEAP := true
-
-# Separate audio devices for VOIP
-BOARD_USES_SEPERATED_VOIP := true
