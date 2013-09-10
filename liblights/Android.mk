@@ -19,7 +19,7 @@ include $(CLEAR_VARS)
 
 # Backlight notification for devices with no notification LED
 ifeq ($(BOARD_USE_BLN),true)
-LOCAL_CFLAGS += -DUSE_BLN
+LOCAL_CFLAGS += -DUSE_BLN -DLIBLIGHTS_SUPPORT_CHARGING_LED
 endif
 
 LOCAL_SRC_FILES := lights.c

@@ -374,8 +374,8 @@ static int open_lights(const struct hw_module_t *module, char const *name,
         set_light = set_light_buttons;
     else if (0 == strcmp(LIGHT_ID_KEYBOARD, name))
         set_light = set_light_keyboard;
-    else if (0 == strcmp(LIGHT_ID_BATTERY, name))
-        set_light = set_light_leds_battery;
+//    else if (0 == strcmp(LIGHT_ID_BATTERY, name))
+//        set_light = set_light_leds_battery;
     else if (0 == strcmp(LIGHT_ID_NOTIFICATIONS, name))
 #ifdef USE_BLN
         set_light = set_light_bln;
@@ -384,7 +384,7 @@ static int open_lights(const struct hw_module_t *module, char const *name,
 #endif
     else if (0 == strcmp(LIGHT_ID_ATTENTION, name))
         set_light = set_light_leds_attention;
-    #if LIBLIGHTS_SUPPORT_CHARGING_LED
+#ifdef LIBLIGHTS_SUPPORT_CHARGING_LED
     else if (0 == strcmp(LIGHT_ID_BATTERY, name)) {
         char value[PROPERTY_VALUE_MAX];
         property_get("persist.sys.enable-charging-led", value, "0");
